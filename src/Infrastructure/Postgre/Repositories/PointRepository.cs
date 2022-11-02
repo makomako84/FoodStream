@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Foodstream.Persistence.Postgre;
+namespace Foodstream.Infrastructure.Postgre;
 
 public class PointRepository : GenericRepository<Point>, IPointRepository
 {

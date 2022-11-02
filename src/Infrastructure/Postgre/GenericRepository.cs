@@ -1,13 +1,9 @@
-﻿using Foodstream.Persistence.Postgre;
+﻿using Foodstream.Infrastructure.Postgre;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Foodstream.Application.Interfaces;
 
-namespace Foodstream.Persistence.Postgre;
+namespace Foodstream.Infrastructure.Postgre;
  
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {

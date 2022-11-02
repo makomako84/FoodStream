@@ -2,7 +2,7 @@ using Foodstream.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Foodstream.Persistence;
+namespace Foodstream.Infrastructure;
 
 public class PointConfiguration : IEntityTypeConfiguration<Point>
 {

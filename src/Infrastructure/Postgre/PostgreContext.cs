@@ -4,7 +4,7 @@ using Npgsql;
 using System;
 using System.Linq;
 
-namespace Foodstream.Persistence.Postgre;
+namespace Foodstream.Infrastructure.Postgre;
 
 public class PostgreContext : DbContext
 {

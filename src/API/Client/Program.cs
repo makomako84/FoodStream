@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
-using Foodstream.Persistence;
+using Foodstream.Infrastructure;
 using Foodstream.Application.Interfaces;
 using Foodstream.Application.Services;
-using Foodstream.Persistence.Postgre;
+using Foodstream.Infrastructure.Postgre;
 
 var builder = WebApplication.CreateBuilder(args);
 

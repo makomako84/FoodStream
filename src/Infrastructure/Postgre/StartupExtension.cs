@@ -1,10 +1,10 @@
-﻿using Foodstream.Persistence.Postgre;
+﻿using Foodstream.Infrastructure.Postgre;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Npgsql;
 
-namespace Foodstream.Persistence;
+namespace Foodstream.Infrastructure;
 
 public static class StartupExtension
 {
