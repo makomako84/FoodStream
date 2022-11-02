@@ -1,0 +1,19 @@
+dotnet new sln --name FoodStream
+
+cd Application
+dotnet new classlib -f net6.0
+
+cd ../Domain
+dotnet new classlib -f net6.0
+
+cd ../Infrastructure
+dotnet new classlib -f net6.0
+
+cd ../Persistance
+dotnet new classlib -f net6.0
+
+cd ../WebAPI
+dotnet new webapi -f net6.0
+
+dotnet sln list
+dotnet new gitignore
