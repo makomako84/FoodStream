@@ -9,5 +9,5 @@ namespace Foodstream.Application.DTO;
 public class PointResponse
 {
     public int Id { get; set; }
-    public int Address { get; set; }
+    public string Address { get; set; }
 }

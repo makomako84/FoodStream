@@ -1,11 +1,18 @@
 using Microsoft.Extensions.Configuration;
-using FoodStream.Persistence;
+using Foodstream.Persistence;
+using Foodstream.Application.Interfaces;
+using Foodstream.Application.Services;
+using Foodstream.Persistence.Postgre;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// persistence
 builder.Services
     .AddPostgreCoreContext(builder.Configuration["PostgreConnection:ConnectionString"]);
+
+// services
+builder.Services.AddScoped<IPointRepository, PointRepository>();
+builder.Services.AddScoped<IPointService, PointService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

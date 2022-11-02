@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Foodstream.Application.DTO;
+﻿using Foodstream.Application.DTO;
 
 namespace Foodstream.Application.Interfaces;
 
 public interface IPointService
 {
-    PointResponse Add(string address);
-    PointResponse Update(int id, string address);
-    List<PointResponse> List();
+    Task<PointResponse> AddAsync(string address);
+    Task<PointResponse> UpdateAsync(int id, string address);
+    Task<PointResponse> GetAsync(int id);
+    Task<IEnumerable<PointResponse>> ListAsync();
 }

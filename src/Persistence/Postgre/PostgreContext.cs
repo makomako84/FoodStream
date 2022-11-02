@@ -1,10 +1,10 @@
-﻿using FoodStream.Domain;
+﻿using Foodstream.Domain;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using System;
 using System.Linq;
 
-namespace FoodStream.Persistence.Postgre;
+namespace Foodstream.Persistence.Postgre;
 
 public class PostgreContext : DbContext
 {
