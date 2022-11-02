@@ -17,3 +17,5 @@ dotnet new webapi -f net6.0
 
 dotnet sln list
 dotnet new gitignore
+
+dotnet ef --project Persistence/Postgre/ --startup-project API/ migrations add test
