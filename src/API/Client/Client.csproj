@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Persistence\Postgre\Postgre.csproj" />
+    <ProjectReference Include="..\..\Persistence\Postgre\Postgre.csproj" />
   </ItemGroup>
 
 </Project>
