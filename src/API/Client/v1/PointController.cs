@@ -38,4 +38,17 @@ public class PointController : ControllerBase
     {
         return await _pointService.UpdateAsync(id, address);
     }
+
+    [HttpPost("upload")]
+    public async Task<string> UploadfileAsync(int id, IFormFile file)
+    {
+        return await _pointService.UploadfileAsync(id, file);
+    }
+
+    [HttpGet("download")]
+    public async Task<IActionResult> DownloadFile(string key)
+    {
+        var document = await _pointService.DownloadFileAsync(key);
+        return File(document.File, "application/octet-stream", document.FileName);
+    }
 }
