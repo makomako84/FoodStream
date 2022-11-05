@@ -1,4 +1,4 @@
-namespace Foodstream.Application.Configuration
+namespace Foodstream.Infrastructure.Configuration
 {
     /// <summary>
     /// Конфигурация подключения к хранилищу amazon

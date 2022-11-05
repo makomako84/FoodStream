@@ -5,7 +5,7 @@ using Foodstream.Domain;
 using Foodstream.Infrastructure.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using Foodstream.Application.Configuration;
+using Foodstream.Infrastructure.Configuration;
 using System.Text.RegularExpressions;
 
 namespace Foodstream.Application.Services;
