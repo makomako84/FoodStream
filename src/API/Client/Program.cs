@@ -1,11 +1,6 @@
-using Microsoft.Extensions.Configuration;
 using Foodstream.Infrastructure;
-using Foodstream.Application.Interfaces;
-using Foodstream.Application.Services;
 using Foodstream.Infrastructure.Postgre;
 using Foodstream.Application;
-using Amazon.S3;
-using Foodstream.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
