@@ -26,14 +26,14 @@ public class PointService : IPointService
         _s3Options = s3Options;
     }
 
-    public async Task<PointDTO> AddAsync(string address)
+    public async Task<PointResponse> AddAsync(string address)
     {
         var newPoint = new Point()
         {
             Address = address,
         };
         var result = await _pointRepository.AddAsync(newPoint);
-        var response = new PointDTO()
+        var response = new PointResponse()
         {
             Id = result.Id,
             Address = result.Address
@@ -41,37 +41,37 @@ public class PointService : IPointService
         return response;
     }
 
-    public async Task<FileDownloadDTO> DownloadFileAsync(string key)
+    public async Task<FileDownloadResponse> DownloadFileAsync(string key)
     {
-        return new FileDownloadDTO
+        return new FileDownloadResponse
         {
             File = await S3Helper.GetFileAsync(_s3Service, _s3Options.Value.BucketName, key),
             FileName = "that file"
         };
     }
 
-    public async Task<PointDTO> GetAsync(int id)
+    public async Task<PointResponse> GetAsync(int id)
     {
         var result = await _pointRepository.GetAsync(id);
-        return new PointDTO()
+        return new PointResponse()
         {
             Id = result.Id,
             Address = result.Address
         };
     }
 
-    public async Task<IEnumerable<PointDTO>> ListAsync()
+    public async Task<IEnumerable<PointResponse>> ListAsync()
     {
         var result = await _pointRepository.ListAsync();
-        return result.Select(p => new PointDTO() { Id = p.Id, Address = p.Address });
+        return result.Select(p => new PointResponse() { Id = p.Id, Address = p.Address });
     }
 
-    public async Task<PointDTO> UpdateAsync(int id, string address)
+    public async Task<PointResponse> UpdateAsync(int id, string address)
     {
         var existingItem = await _pointRepository.GetAsync(id);
         existingItem.Address = address;
         var result = await _pointRepository.UpdateAsync(existingItem);
-        return new PointDTO()
+        return new PointResponse()
         {
             Id = id,
             Address = result.Address

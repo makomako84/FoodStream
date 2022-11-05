@@ -1,4 +1,4 @@
-namespace Foodstream.Presentation.Contracts
+namespace Foodstream.Application.DTO
 {
     public class FileDownloadResponse
     {    
