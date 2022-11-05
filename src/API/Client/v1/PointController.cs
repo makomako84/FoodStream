@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Foodstream.Application.Interfaces;
 using Foodstream.Presentation.Contracts;
-using Foodstream.Application.DTO;
 
 namespace Foodstream.Presentation.App;
 
@@ -19,7 +18,7 @@ public class PointController : ControllerBase
     [HttpGet("get")]
     public async Task<PointResponse> GetAsync(int id)
     {
-        PointDTO result = await _pointService.GetAsync(id);
+        var result = await _pointService.GetAsync(id);
         return new PointResponse()
         {
             Id = result.Id,
@@ -30,14 +29,14 @@ public class PointController : ControllerBase
     [HttpGet("list")]
     public async Task<IEnumerable<PointResponse>> ListAsync()
     {
-        IEnumerable<PointDTO> result = await _pointService.ListAsync();
+        var result = await _pointService.ListAsync();
         return result.Select(p => new PointResponse());
     }
 
     [HttpPost("add")]
     public async Task<PointResponse> AddAsync([FromQuery]string address)
     {
-        PointDTO result = await _pointService.AddAsync(address);
+        var result = await _pointService.AddAsync(address);
         return new PointResponse()
         {
             Id = result.Id,
@@ -48,7 +47,7 @@ public class PointController : ControllerBase
     [HttpPost("update")]
     public async Task<PointResponse> UpdateAsync([FromQuery]int id, string address)
     {
-        PointDTO result = await _pointService.UpdateAsync(id, address);
+        var result = await _pointService.UpdateAsync(id, address);
         return new PointResponse()
         {
             Id = result.Id,
@@ -65,7 +64,7 @@ public class PointController : ControllerBase
     [HttpGet("download")]
     public async Task<IActionResult> DownloadFile(string key)
     {
-        FileDownloadDTO document = await _pointService.DownloadFileAsync(key);
+        var document = await _pointService.DownloadFileAsync(key);
         return File(document.File, "application/octet-stream", document.FileName);
     }
 }
