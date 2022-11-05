@@ -1,11 +1,7 @@
-﻿using Amazon.S3;
-using Foodstream.Application.DTO;
+﻿using Foodstream.Application.DTO;
 using Foodstream.Application.Interfaces;
 using Foodstream.Domain;
-using Foodstream.Infrastructure.Common;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using Foodstream.Infrastructure.Configuration;
 using System.Text.RegularExpressions;
 
 namespace Foodstream.Application.Services;
@@ -13,17 +9,14 @@ namespace Foodstream.Application.Services;
 public class PointService : IPointService
 {
     private readonly IPointRepository _pointRepository;
-    private readonly IAmazonS3 _s3Service;
-    private readonly IOptions<S3Options> _s3Options;
+    private readonly IS3Service _s3Service;
 
     public PointService(
         IPointRepository pointRepository,
-        IAmazonS3 s3Service,
-        IOptions<S3Options> s3Options)
+        IS3Service s3Service)
     {
         _pointRepository = pointRepository;
         _s3Service = s3Service;
-        _s3Options = s3Options;
     }
 
     public async Task<PointDTO> AddAsync(string address)
@@ -45,7 +38,7 @@ public class PointService : IPointService
     {
         return new FileDownloadDTO
         {
-            File = await S3Helper.GetFileAsync(_s3Service, _s3Options.Value.BucketName, key),
+            File = await _s3Service.GetFileAsync("foodstream", key),
             FileName = "that file"
         };
     }
@@ -81,8 +74,8 @@ public class PointService : IPointService
     public async Task<string> UploadfileAsync(int id, IFormFile file)
     {
         var originalName = GetNewFileName("somename", file);
-        var key = await S3Helper.PutFileAsync(_s3Service, file, _s3Options.Value.BucketName,
-          new S3KeyBuilder(_s3Options.Value.PointPrefix, originalName, true));
+        var key = await _s3Service.PutFileAsync(file, "foodstream",
+            new KeyBuilder("point/", originalName, true));
         return key;
     }
 

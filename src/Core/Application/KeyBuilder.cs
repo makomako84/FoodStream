@@ -1,9 +1,9 @@
-namespace Foodstream.Infrastructure.Common;
+namespace Foodstream.Application;
 
-public class S3KeyBuilder
+public class KeyBuilder
 {                
     public string Key { get; private set;}
-    public S3KeyBuilder(string prefix, string baseIdentifier, bool generateIdentifier = false)
+    public KeyBuilder(string prefix, string baseIdentifier, bool generateIdentifier = false)
     {
         Key = BuildKey(prefix, baseIdentifier, generateIdentifier);
     }

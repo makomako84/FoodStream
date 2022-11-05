@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.Extensions.NETCore.Setup;
+using Foodstream.Application.Interfaces;
+using Foodstream.Infrastructure.Common;
 
 namespace Foodstream.Infrastructure;
 
@@ -31,6 +33,8 @@ public static class DI
 
         services
             .Configure<S3Options>(configuration.GetSection(S3Options.Section));
+
+        services.AddScoped<IS3Service, S3Service>();
 
         return services;
     }
