@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Foodstream.Application.Interfaces;
+using Foodstream.Presentation.Contracts;
 using Foodstream.Application.DTO;
 
-namespace Foodstream.API.Client;
+namespace Foodstream.Presentation.App;
 
 [ApiController]
 [Route("[controller]")]
@@ -18,25 +19,41 @@ public class PointController : ControllerBase
     [HttpGet("get")]
     public async Task<PointResponse> GetAsync(int id)
     {
-        return await _pointService.GetAsync(id);
+        PointDTO result = await _pointService.GetAsync(id);
+        return new PointResponse()
+        {
+            Id = result.Id,
+            Address = result.Address
+        };
     }
 
     [HttpGet("list")]
     public async Task<IEnumerable<PointResponse>> ListAsync()
     {
-        return await _pointService.ListAsync();
+        IEnumerable<PointDTO> result = await _pointService.ListAsync();
+        return result.Select(p => new PointResponse());
     }
 
     [HttpPost("add")]
     public async Task<PointResponse> AddAsync([FromQuery]string address)
     {
-        return await _pointService.AddAsync(address);
+        PointDTO result = await _pointService.AddAsync(address);
+        return new PointResponse()
+        {
+            Id = result.Id,
+            Address = result.Address
+        };
     }
 
     [HttpPost("update")]
     public async Task<PointResponse> UpdateAsync([FromQuery]int id, string address)
     {
-        return await _pointService.UpdateAsync(id, address);
+        PointDTO result = await _pointService.UpdateAsync(id, address);
+        return new PointResponse()
+        {
+            Id = result.Id,
+            Address = result.Address
+        };
     }
 
     [HttpPost("upload")]
@@ -48,7 +65,7 @@ public class PointController : ControllerBase
     [HttpGet("download")]
     public async Task<IActionResult> DownloadFile(string key)
     {
-        var document = await _pointService.DownloadFileAsync(key);
+        FileDownloadDTO document = await _pointService.DownloadFileAsync(key);
         return File(document.File, "application/octet-stream", document.FileName);
     }
 }
