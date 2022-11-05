@@ -1,5 +1,8 @@
 namespace Foodstream.Application;
 
+/// <summary>
+/// Generating key-names for general purpose
+/// </summary>
 public class KeyBuilder
 {                
     public string Key { get; private set;}

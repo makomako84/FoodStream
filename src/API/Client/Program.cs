@@ -5,7 +5,7 @@ using Foodstream.Application;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddApplication()
+    .AddApplication(builder.Configuration)
     .AddPostgre(builder.Configuration)
     .AddInfrastracture(builder.Configuration);
 

@@ -5,16 +5,16 @@ namespace Foodstream.Application.Interfaces;
 public interface IS3Service
 {
     Task<string> PutFileAsync(
-        IFormFile file, string bucketName, KeyBuilder keyBuilder);
+        IFormFile file, KeyBuilder keyBuilder);
 
     Task<string> PutFileAsync(
-        byte[] rawData, string bucketName, KeyBuilder keyBuilder);
+        byte[] rawData, KeyBuilder keyBuilder);
 
     Task<string> PutFileAsync(
-        Stream stream, string bucketName, KeyBuilder keyBuilder);
+        Stream stream, KeyBuilder keyBuilder);
 
 
-    Task<byte[]> GetFileAsync(string bucketName, string key);
+    Task<byte[]> GetFileAsync(string key);
 
-    Task DeleteFileAsync(string bucketName, string key);
+    Task DeleteFileAsync(string key);
 }

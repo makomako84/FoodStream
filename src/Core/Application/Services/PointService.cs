@@ -2,6 +2,7 @@
 using Foodstream.Application.Interfaces;
 using Foodstream.Domain;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using System.Text.RegularExpressions;
 
 namespace Foodstream.Application.Services;
@@ -10,13 +11,16 @@ public class PointService : IPointService
 {
     private readonly IPointRepository _pointRepository;
     private readonly IS3Service _s3Service;
+    private readonly ApplicationSettings _applicationSettings;
 
     public PointService(
         IPointRepository pointRepository,
-        IS3Service s3Service)
+        IS3Service s3Service,
+        IOptions<ApplicationSettings> appSettings)
     {
         _pointRepository = pointRepository;
         _s3Service = s3Service;
+        _applicationSettings = appSettings.Value;
     }
 
     public async Task<PointDTO> AddAsync(string address)
@@ -38,7 +42,7 @@ public class PointService : IPointService
     {
         return new FileDownloadDTO
         {
-            File = await _s3Service.GetFileAsync("foodstream", key),
+            File = await _s3Service.GetFileAsync(key),
             FileName = "that file"
         };
     }
@@ -74,8 +78,8 @@ public class PointService : IPointService
     public async Task<string> UploadfileAsync(int id, IFormFile file)
     {
         var originalName = GetNewFileName("somename", file);
-        var key = await _s3Service.PutFileAsync(file, "foodstream",
-            new KeyBuilder("point/", originalName, true));
+        var key = await _s3Service.PutFileAsync(file, 
+            new KeyBuilder(_applicationSettings.PointPrefix, originalName, true));
         return key;
     }
 

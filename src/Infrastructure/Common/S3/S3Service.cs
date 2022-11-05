@@ -3,7 +3,6 @@ using Amazon.S3.Model;
 using Microsoft.AspNetCore.Http;
 using Foodstream.Application.Interfaces;
 using Foodstream.Application;
-using Foodstream.Infrastructure.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace Foodstream.Infrastructure.Common;
@@ -11,24 +10,24 @@ namespace Foodstream.Infrastructure.Common;
 public class S3Service : IS3Service
 {
     private readonly IAmazonS3 _client;
-    private readonly S3Options _s3Options;
+    private readonly InfrastractureSettings _s3Options;
     public S3Service(
         IAmazonS3 client,
-        IOptions<S3Options> s3Options)
+        IOptions<InfrastractureSettings> s3Options)
     {
         _client = client;
         _s3Options = s3Options.Value;
     }
 
     public async Task<string> PutFileAsync(
-        IFormFile file, string bucketName, KeyBuilder keyBuilder)
+        IFormFile file, KeyBuilder keyBuilder)
     {
         using var memoryStream = new MemoryStream();
         await file.CopyToAsync(memoryStream);
         string key = keyBuilder.Key;
         var putRequest = new PutObjectRequest()
         {
-            BucketName = bucketName,
+            BucketName = _s3Options.S3BucketName,
             Key = key,
             InputStream = memoryStream
         };
@@ -37,13 +36,13 @@ public class S3Service : IS3Service
     }
 
     public async Task<string> PutFileAsync( 
-        byte[] rawData, string bucketName, KeyBuilder keyBuilder) 
+        byte[] rawData, KeyBuilder keyBuilder) 
     {
         using var memoryStream = new MemoryStream(rawData);
         string key = keyBuilder.Key;
         var putRequest = new PutObjectRequest()
         {
-            BucketName = bucketName,
+            BucketName = _s3Options.S3BucketName,
             Key = key,
             InputStream = memoryStream
         };
@@ -51,12 +50,12 @@ public class S3Service : IS3Service
         return key;
     }
 
-    public async Task<string> PutFileAsync(Stream stream, string bucketName, KeyBuilder keyBuilder)
+    public async Task<string> PutFileAsync(Stream stream, KeyBuilder keyBuilder)
     {
         string key = keyBuilder.Key;
         var putRequest = new PutObjectRequest()
         {
-            BucketName = bucketName,
+            BucketName = _s3Options.S3BucketName,
             Key = key,
             InputStream = stream
         };
@@ -64,11 +63,11 @@ public class S3Service : IS3Service
         return key;
     }
 
-    public async Task<byte[]> GetFileAsync(string bucketName, string key)
+    public async Task<byte[]> GetFileAsync(string key)
     {
         GetObjectRequest request = new GetObjectRequest()
         {
-            BucketName = bucketName,
+            BucketName = _s3Options.S3BucketName,
             Key = key
         };                        
         using var response = await _client.GetObjectAsync(request);
@@ -77,11 +76,11 @@ public class S3Service : IS3Service
         return result.ToArray();
     }
 
-    public async Task DeleteFileAsync(string bucketName, string key)
+    public async Task DeleteFileAsync(string key)
     {
         var deleteObjectRequest = new DeleteObjectRequest
         {
-            BucketName = bucketName,
+            BucketName = _s3Options.S3BucketName,
             Key = key
         };            
         await _client.DeleteObjectAsync(deleteObjectRequest);

@@ -1,7 +1,6 @@
 ﻿using Amazon.S3;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Foodstream.Infrastructure.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +21,7 @@ public static class DI
     {
         // s3
         var s3Credentials = configuration
-            .GetSection(S3CredentialsOptions.Section)
+            .GetSection(S3CredentialsOptions.Position)
             .Get<S3CredentialsOptions>();
         var s3Options = configuration.GetAWSOptions();
         s3Options.Credentials = new Amazon.Runtime.BasicAWSCredentials(
@@ -32,7 +31,7 @@ public static class DI
         services.AddAWSService<IAmazonS3>();
 
         services
-            .Configure<S3Options>(configuration.GetSection(S3Options.Section));
+            .Configure<InfrastractureSettings>(configuration.GetSection(InfrastractureSettings.Position));
 
         services.AddScoped<IS3Service, S3Service>();
 
