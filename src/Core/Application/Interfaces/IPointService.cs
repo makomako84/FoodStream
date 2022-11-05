@@ -5,10 +5,10 @@ namespace Foodstream.Application.Interfaces;
 
 public interface IPointService
 {
-    Task<PointResponse> AddAsync(string address);
-    Task<PointResponse> UpdateAsync(int id, string address);
-    Task<PointResponse> GetAsync(int id);
-    Task<IEnumerable<PointResponse>> ListAsync();
+    Task<PointDTO> AddAsync(string address);
+    Task<PointDTO> UpdateAsync(int id, string address);
+    Task<PointDTO> GetAsync(int id);
+    Task<IEnumerable<PointDTO>> ListAsync();
     Task<string> UploadfileAsync(int id, IFormFile file);
-    Task<FileDownloadResponse> DownloadFileAsync(string key);
+    Task<FileDownloadDTO> DownloadFileAsync(string key);
 }
