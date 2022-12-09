@@ -1,4 +1,4 @@
-namespace FoodStream.Domain;
+namespace Foodstream.Domain;
 
 public class Point : Entity
 {
