@@ -1,9 +1,8 @@
-﻿using Foodstream.Infrastructure.Postgre;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Foodstream.Application.Interfaces;
+using MakoSystems.Foodstream.Application;
 
-namespace Foodstream.Infrastructure.Postgre;
+namespace MakoSystems.Foodstream.Postgre;
  
 public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 {

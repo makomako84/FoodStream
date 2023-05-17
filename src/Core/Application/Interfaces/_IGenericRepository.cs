@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
-namespace Foodstream.Application.Interfaces
+namespace MakoSystems.Foodstream.Application
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {

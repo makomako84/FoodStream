@@ -1,9 +1,9 @@
-﻿using Foodstream.Application.Interfaces;
+﻿using MakoSystems.Foodstream.Application;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Foodstream.Infrastructure.Postgre;
+namespace MakoSystems.Foodstream.Postgre;
 
 public static class DI
 {

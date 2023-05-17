@@ -1,6 +1,6 @@
-using Foodstream.Infrastructure;
-using Foodstream.Infrastructure.Postgre;
-using Foodstream.Application;
+using MakoSystems.Foodstream.Common;
+using MakoSystems.Foodstream.Postgre;
+using MakoSystems.Foodstream.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 

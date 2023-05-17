@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Foodstream.Application.Interfaces;
+namespace MakoSystems.Foodstream.Application;
 
 public interface IS3Service
 {

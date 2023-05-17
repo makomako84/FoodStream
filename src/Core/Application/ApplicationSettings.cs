@@ -1,4 +1,4 @@
-namespace Foodstream.Application;
+namespace MakoSystems.Foodstream.Application;
 
 public class ApplicationSettings
 {

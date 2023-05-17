@@ -1,11 +1,9 @@
-﻿using Foodstream.Application.DTO;
-using Foodstream.Application.Interfaces;
-using Foodstream.Domain;
+﻿using MakoSystems.Foodstream.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using System.Text.RegularExpressions;
 
-namespace Foodstream.Application.Services;
+namespace MakoSystems.Foodstream.Application;
 
 public class PointService : IPointService
 {

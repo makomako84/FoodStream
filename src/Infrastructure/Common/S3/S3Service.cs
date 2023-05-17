@@ -1,11 +1,10 @@
 using Amazon.S3;
 using Amazon.S3.Model;
 using Microsoft.AspNetCore.Http;
-using Foodstream.Application.Interfaces;
-using Foodstream.Application;
+using MakoSystems.Foodstream.Application;
 using Microsoft.Extensions.Options;
 
-namespace Foodstream.Infrastructure.Common;
+namespace MakoSystems.Foodstream.Common;
 
 public class S3Service : IS3Service
 {

@@ -1,1 +1,1 @@
- dotnet ef --startup-project "API/Client" --project "Infrastructure/Postgre"  migrations list
+ dotnet ef --startup-project "Projects/Server" --project "Infrastructure/Postgre"  migrations list

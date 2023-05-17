@@ -1,10 +1,7 @@
-﻿using Foodstream.Domain;
+﻿using MakoSystems.Foodstream.Domain;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;
-using System;
-using System.Linq;
 
-namespace Foodstream.Infrastructure.Postgre;
+namespace MakoSystems.Foodstream.Postgre;
 
 public class PostgreContext : DbContext
 {

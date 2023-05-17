@@ -1,4 +1,4 @@
-﻿namespace Foodstream.Domain
+﻿namespace MakoSystems.Foodstream.Domain
 {
     public class OrderItem
     {

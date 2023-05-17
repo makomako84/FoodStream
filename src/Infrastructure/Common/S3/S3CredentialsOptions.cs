@@ -1,4 +1,4 @@
-namespace Foodstream.Infrastructure.Common;
+namespace MakoSystems.Foodstream.Common;
 
 public class S3CredentialsOptions
 {

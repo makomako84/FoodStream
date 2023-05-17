@@ -1,4 +1,4 @@
-namespace Foodstream.Application;
+namespace MakoSystems.Foodstream.Application;
 
 /// <summary>
 /// Generating key-names for general purpose

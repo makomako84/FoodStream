@@ -7,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.Extensions.NETCore.Setup;
-using Foodstream.Application.Interfaces;
-using Foodstream.Infrastructure.Common;
+using MakoSystems.Foodstream.Application;
 
-namespace Foodstream.Infrastructure;
+namespace MakoSystems.Foodstream.Common;
 
 public static class DI
 {

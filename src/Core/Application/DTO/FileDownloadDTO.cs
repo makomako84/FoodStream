@@ -1,4 +1,4 @@
-namespace Foodstream.Application.DTO;
+namespace MakoSystems.Foodstream.Application;
 public class FileDownloadDTO
 {    
     public byte[] File { get; set; }

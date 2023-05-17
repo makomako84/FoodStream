@@ -1,8 +1,8 @@
-using Foodstream.Domain;
+using MakoSystems.Foodstream.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Foodstream.Infrastructure;
+namespace MakoSystems.Foodstream.Postgre;
 
 public class PointConfiguration : IEntityTypeConfiguration<Point>
 {

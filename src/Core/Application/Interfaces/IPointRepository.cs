@@ -1,6 +1,6 @@
-﻿using Point = Foodstream.Domain.Point;
+﻿using Point = MakoSystems.Foodstream.Domain.Point;
 
-namespace Foodstream.Application.Interfaces;
+namespace MakoSystems.Foodstream.Application;
 
 public interface IPointRepository : IGenericRepository<Point>
 {

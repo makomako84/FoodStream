@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Foodstream.Application.Interfaces;
-using Foodstream.Presentation.Contracts;
+using MakoSystems.Foodstream.Application;
 
 namespace Foodstream.Presentation.App;
 
@@ -16,10 +15,10 @@ public class PointController : ControllerBase
     }
 
     [HttpGet("get")]
-    public async Task<PointResponse> GetAsync(int id)
+    public async Task<PointDTO> GetAsync(int id)
     {
         var result = await _pointService.GetAsync(id);
-        return new PointResponse()
+        return new PointDTO()
         {
             Id = result.Id,
             Address = result.Address
@@ -27,17 +26,17 @@ public class PointController : ControllerBase
     }
 
     [HttpGet("list")]
-    public async Task<IEnumerable<PointResponse>> ListAsync()
+    public async Task<IEnumerable<PointDTO>> ListAsync()
     {
         var result = await _pointService.ListAsync();
-        return result.Select(p => new PointResponse());
+        return result.Select(p => new PointDTO());
     }
 
     [HttpPost("add")]
-    public async Task<PointResponse> AddAsync([FromQuery]string address)
+    public async Task<PointDTO> AddAsync([FromQuery]string address)
     {
         var result = await _pointService.AddAsync(address);
-        return new PointResponse()
+        return new PointDTO()
         {
             Id = result.Id,
             Address = result.Address
@@ -45,10 +44,10 @@ public class PointController : ControllerBase
     }
 
     [HttpPost("update")]
-    public async Task<PointResponse> UpdateAsync([FromQuery]int id, string address)
+    public async Task<PointDTO> UpdateAsync([FromQuery]int id, string address)
     {
         var result = await _pointService.UpdateAsync(id, address);
-        return new PointResponse()
+        return new PointDTO()
         {
             Id = result.Id,
             Address = result.Address

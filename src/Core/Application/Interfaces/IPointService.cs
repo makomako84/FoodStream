@@ -1,7 +1,6 @@
-﻿using Foodstream.Application.DTO;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Foodstream.Application.Interfaces;
+namespace MakoSystems.Foodstream.Application;
 
 public interface IPointService
 {

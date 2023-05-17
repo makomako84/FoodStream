@@ -1,9 +1,8 @@
-﻿using Foodstream.Application.Interfaces;
-using Foodstream.Application.Services;
+﻿using MakoSystems.Foodstream.Application;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Foodstream.Application;
+namespace MakoSystems.Foodstream.Application;
 
 public static class DI
 {
